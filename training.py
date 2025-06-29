@@ -30,7 +30,7 @@ dropout = 0.2
 print(device)
 
 chars = ""
-with open("openwebtext/vocab.txt", 'r', encoding='utf-8') as f:
+with open("vocab.txt", 'r', encoding='utf-8') as f:
         text = f.read()
         chars = sorted(list(set(text)))
         
@@ -224,7 +224,7 @@ class GPTLanguageModel(nn.Module):
             index = torch.cat((index, index_next), dim=1) # (B, T+1)
         return index
 
-model = GPTLanguageModel()
+model = GPTLanguageModel(vocab_size=vocab_size)
 # print('loading model parameters...')
 # with open('model-01.pkl', 'rb') as f:
 #     model = pickle.load(f)
